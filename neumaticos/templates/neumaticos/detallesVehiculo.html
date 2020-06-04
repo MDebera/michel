@@ -1,0 +1,114 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class='col-12'>
+<h2>Detalles</h2>
+
+<div class="row">
+		<div class="col-4">
+			Empresa: {{ empresa.Nombre }}
+		</div>
+		<div class="col-4">
+			RUT: {{ empresa.RUT }}
+		</div>
+		<div class="col-4">
+			 Razón Social: {{ empresa.Razon_social }}
+		</div>
+</div>
+<div class="row">
+	<div class="col-3">
+		<label for="matricula">Matrícula:</label>
+		{{vehiculo.matricula}}
+	</div>
+
+	<div class="col-3">
+		<label for="cantidad">Tipo de vehículo:</label>
+		{{vehiculo.Tipo_vehiculo}}
+	</div>
+	<div class="col-3">
+		<label for="marca">Marca:</label>
+		{{vehiculo.marca}}
+	</div>
+	<div class="col-3">
+		<label for="modelo">Modelo:</label>
+		{{vehiculo.modelo}}
+	</div>
+</div>
+
+<div class="bus">
+	<div class="row">
+		<div class="col-2 text-center">
+			<label for="posicion1">Posicion 1</label><br>
+			{{vehiculo.posicion1}}
+		</div>
+		<div class="col-2 text-center">
+			<label for="posicion1">Posicion 2</label><br>
+			{{vehiculo.posicion2}}
+		</div>
+		<div class="col-2">
+
+		</div>
+		<div class="col-2 text-center">
+			<label for="posicion1">Posicion 3</label><br>
+			{{vehiculo.posicion3}}
+		</div>
+		<div class="col-2">
+			<span class="d-block p-t-30">
+				<i class="fa fa-user"></i> CONDUCTOR
+				<span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-2 text-center">
+			<label for="posicion1">Posicion 4</label><br>
+			{{vehiculo.posicion4}}
+		</div>
+		<div class="col-2 text-center">
+			<label for="posicion1">Posicion5</label><br>
+			{{vehiculo.posicion5}}
+		</div>
+		<div class="col-2 text-center">
+
+		</div>
+		<div class="col-2 text-center">
+			<label for="posicion1">Posicion 6</label><br>
+			{{vehiculo.posicion6}}
+		</div>
+		<div class="col-2">
+
+		</div>
+	</div>
+</div>
+{% for neumatico in neumaticos %}
+<div class="detalle-neumatico">
+	<div class="row">
+		<div class="col-1">
+			{{neumatico.Fuego}}
+		</div>
+		<div class="col-2">
+			Posición {{forloop.counter}}
+		</div>
+		<div class="col-1">
+			{{neumatico.Profundidad}}
+		</div>
+		<div class="col-2">
+			{{neumatico.Marca}}
+		</div>
+		<div class="col-2">
+			{{neumatico.Radio}}
+		</div>
+		<div class="col-2">
+			{{neumatico.Talle}}
+		</div>
+		<div class="col-2">
+			{{neumatico.Banda}}
+		</div>
+	</div>
+</div>
+{% endfor %}
+
+
+
+</div>
+
+{% endblock %}

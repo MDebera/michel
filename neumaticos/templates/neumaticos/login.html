@@ -1,0 +1,53 @@
+{% extends 'layout-login.html' %}
+
+{% block content %}
+
+<form action="{% url 'validacion' %}" method="post" class="login100-form validate-form">
+	{% csrf_token %}
+	<div class="login100-form-avatar">
+		<img src="/static/images/avatar-01.jpg" alt="AVATAR">
+	</div>
+
+	<span class="login100-form-title p-t-20 p-b-45">
+	SISTEMA DE SEGUIMIENTO DE NEUMATICOS
+	</span>
+	<div class="wrap-input100 validate-input m-b-10" data-validate = "Usuario requerido">
+		<input class="input100" type="text" name="nombre" id="fname" placeholder="Usuario">
+		<span class="focus-input100"></span>
+		<span class="symbol-input100">
+			<i class="fa fa-user"></i>
+		</span>
+	</div>
+	<div class="wrap-input100 validate-input m-b-10" data-validate = "Contraseña requerida">
+		<input class="input100" type="password" name="password" id="lname" placeholder="Contraseña">
+		<span class="focus-input100"></span>
+		<span class="symbol-input100">
+			<i class="fa fa-lock"></i>
+		</span>
+	</div>
+	{% if error_message %}
+	<div class="alert alert-danger col">
+		<p><strong>{{ error_message }}</strong></p>
+	</div>
+	{% endif %}
+	<div class="container-login100-form-btn p-t-10">
+				<input type="submit" class="login100-form-btn" id="ingresar" value="Ingresar">
+		</div>
+
+		<div class="text-center w-full p-t-25 p-b-25">
+			<a href="#" class="txt1">
+				¿Olvidó su usuario o contraseña?
+			</a>
+		</div>
+
+		<div class="text-center w-full">
+			<a class="txt1" href="#">
+				Solicitar nueva cuenta
+				<i class="fa fa-long-arrow-right"></i>
+			</a>
+		</div>
+
+	</div>
+</form>
+
+{% endblock %}

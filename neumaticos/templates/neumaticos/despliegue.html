@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="col-12">
+		<div class='col-6 empresas'>
+				<label for="empresas">Empresa:</label>
+				<select id="empresas"  class="input100" onchange="window.location='{% url 'despliegue' %}?e='+this.options[this.selectedIndex].value">
+					<option value="0">Seleccionar</option>
+						{% for empresa in empresas %}
+								<option value="{{empresa.RUT}}" {% if empresa.RUT == current_e %} selected="selected" {% endif %}>
+									{{empresa.Nombre}} | {{empresa.RUT}}
+								</option>
+						{% endfor %}
+					</select>
+			</div>
+			<div class="col-6">
+				<a href='{% url 'agregarEmpresa' %}' class="btn btn-success">Agregar</a>
+				<a href='javascript:void(0)' onclick="modificarEmpresa()" class="btn btn-primary">Modificar</a>
+				<a href='javascript:void(0)' onclick="confirmarEliminarEmpresa()"  class="btn btn-danger">Eliminar</a>
+			</div>
+</div>
+	<div class="col-12">
+		<div class='col-6 vehiculos'>
+			<label for="vehiculos">Vehículo:</label><br>
+			<select id="vehiculos" class="input100" onchange="filtrarNeumaticos(this.options[this.selectedIndex].value)">
+				<option value="0">Seleccionar</option>
+				{% for v in vehiculos %}
+						<option value="{{v.matricula}}"> {{v.matricula}} - {{v.marca}} {{v.modelo}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class="col-6">
+				<a href='{% url 'agregarVehiculo' %}' class="btn btn-success">Agregar</a>
+				<a href='javascript:void(0)' onclick="modificarVehiculo()" class="btn btn-primary">Modificar</a>
+				<a href="javascript:void(0)" onclick="confirmarEliminarVehiculo()" class="btn btn-danger">Eliminar</a>
+		</div>
+	</div>
+	<div class="col-12 m-t-30 m-b-30">
+		<a href='javascript:void(0)' onclick="verDetallesVehiculo()" class="btn btn-primary">Ver vehículo</a>
+	</div>
+
+	<div class="col-12">
+		<div class='col-6 vehiculos'>
+			<label for="neumaticos">Neumaticos:</label><br>
+			<select id="neumaticos" class="input100">
+				<option value="0">Seleccionar</option>
+				{% for n in neumaticos %}
+						<option value="{{n.Fuego}}"> {{n.Fuego}}</option>
+				{% endfor %}
+			</select>
+		</div>
+		<div class="col-6">
+				<a href='{% url 'agregarNeumatico' %}' class="btn btn-success">Agregar</a>
+				<a href='javascript:void(0)' onclick="modificarNeumatico()" class="btn btn-primary">Modificar</a>
+				<a href="javascript:void(0)" onclick="confirmarEliminarNeumatico()" class="btn btn-danger">Eliminar</a>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

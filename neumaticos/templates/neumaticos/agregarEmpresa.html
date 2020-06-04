@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class='col-12'>
+{% if empresa %}
+<h2>Modificar empresa</h2>
+{% else %}
+<h2>Alta de empresa</h2>
+{% endif %}
+<form action="{% url 'guardarEmpresa' %}" method="post">
+	{% csrf_token %}
+	<div class="row">
+		<div class="col-4">
+				<label for="rut">RUT</label>
+				<input type="text" id="RUT" name="RUT" value="{{empresa.RUT}}">
+		</div>
+		<div class="col-4">
+			<label for="matricula">Nombre</label>
+			<input type="text" id="nombre" name="nombre"  value="{{empresa.Nombre}}">
+		</div>
+
+		<div class="col-4">
+			<label for="cantidad">Razón social</label>
+				<input type="text" id="razon_social" name="razon_social"  value="{{empresa.Razon_social}}">
+		</div>
+	</div>
+	<div class="row p-t-15">
+		<div class="col-4">
+			<label for="cantidad">Teléfono</label>
+			<input type="text" id="telefono" name="telefono" value="{{empresa.Telefono}}">
+		</div>
+		<div class="col-4">
+			<label for="marca">Dirección</label>
+			<input type="text" id="direccion" name="direccion" value="{{empresa.Direccion}}">
+		</div>
+		<div class="col-4">
+
+		</div>
+	</div>
+
+<div class="row p-t-50">
+	<div class="col-4">
+		<input type="submit" id="botonagregar" class="btn btn-success" value="Guardar">
+	</div>
+</div>
+
+
+</form>
+
+</div>
+
+{% endblock %}

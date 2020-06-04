@@ -1,0 +1,106 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class='col-12'>
+{% if vehiculo %}
+<h2>Modificar de vehículo</h2>
+{% else %}
+<h2>Alta vehículo</h2>
+{% endif %}
+
+<form action="{% url 'guardarVehiculo' %}" method="post">
+	{% csrf_token %}
+	<div class="row">
+		<div class="col-4">
+				<label for="empresa">Empresa</label>
+				<select name="empresa" id="empresa" class="input100">
+					<option value="0">Seleccionar empresa</option>
+					{% for empresa in empresas %}
+							<option value="{{empresa.RUT}}" {% if empresa.RUT == vehiculo.empresa %} selected="selected" {% endif %}>
+								{{empresa.Nombre}} | {{empresa.RUT}}
+							</option>
+					{% endfor %}
+				</select>
+		</div>
+		<div class="col-4">
+			<label for="matricula">Matrícula</label>
+			<input type="text" id="matricula" name="matricula" value="{{vehiculo.matricula}}">
+		</div>
+
+		<div class="col-4">
+			<label for="cantidad">Tipo de vehículo</label>
+				<select name="tipo" class="input100">
+					<option value="omnibus">Omnibus</option>
+				</select>
+		</div>
+	</div>
+	<div class="row p-t-15">
+		<div class="col-4">
+			<label for="cantidad">Cantidad de neumáticos</label>
+			<input type="text" id="cantidad" name="cantidad" value="{{vehiculo.Cantidad_neumaticos}}">
+		</div>
+		<div class="col-4">
+			<label for="marca">Marca</label>
+			<input type="text" id="marca" name="marca" value="{{vehiculo.marca}}">
+		</div>
+		<div class="col-4">
+			<label for="modelo">Modelo:</label>
+			<input type="text" id="modelo" name="modelo" value="{{vehiculo.modelo}}">
+		</div>
+	</div>
+	<div class="bus">
+		<div class="row">
+			<div class="col-2">
+				<label for="posicion1">Posicion 1</label>
+				<input type="text" id="posicion1" name="posicion1" value="{{vehiculo.posicion1}}">
+			</div>
+			<div class="col-2">
+				<label for="posicion1">Posicion 2</label>
+				<input type="text" id="posicion2" name="posicion2" value="{{vehiculo.posicion2}}">
+			</div>
+			<div class="col-2">
+
+			</div>
+			<div class="col-2">
+				<label for="posicion1">Posicion 3</label><br>
+				<input type="text" id="posicion3" name="posicion3" value={{vehiculo.posicion3}}>
+			</div>
+			<div class="col-2">
+				<span class="d-block p-t-30">
+					<i class="fa fa-user"></i> CONDUCTOR
+					<span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2">
+				<label for="posicion1">Posicion 4</label>
+				<input type="text" id="posicion4" name="posicion4" value={{vehiculo.posicion4}}>
+			</div>
+			<div class="col-2">
+				<label for="posicion1">Posicion5</label>
+				<input type="text" id="posicion5" name="posicion5" value={{vehiculo.posicion5}}>
+			</div>
+			<div class="col-2">
+
+			</div>
+			<div class="col-2">
+				<label for="posicion1">Posicion 6</label><br>
+				<input type="text" id="posicion6" name="posicion6" value={{vehiculo.posicion6}}>
+			</div>
+			<div class="col-2">
+
+			</div>
+		</div>
+	</div>
+<div class="row p-t-50">
+	<div class="col-4">
+		<input type="submit" id="botonagregar" class="btn btn-success" value="Guardar">
+	</div>
+</div>
+
+
+</form>
+
+</div>
+
+{% endblock %}

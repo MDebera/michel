@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class='col-12'>
+{% if neumatico %}
+<h2>Modificar Neumatico</h2>
+{% else %}
+<h2>Alta de Neumatico</h2>
+{% endif %}
+<form action="{% url 'guardarNeumatico' %}" method="post">
+	{% csrf_token %}
+	<div class="row">
+		<div class="col-4">
+				<label for="fuego">Fuego</label>
+				<input type="text" id="Fuego" name="fuego" value="{{neumatico.Fuego}}">
+		</div>
+		<div class="col-4">
+			<label for="matricula">Profundidad</label>
+			<input type="text" id="Profundidad" name="profundidad"  value="{{neumatico.Profundidad}}">
+		</div>
+
+		<div class="col-4">
+			<label for="Marca">Marca</label>
+				<input type="text" id="marca" name="marca"  value="{{neumatico.Marca}}">
+		</div>
+	</div>
+	<div class="row p-t-15">
+		<div class="col-4">
+			<label for="Radio">Radio</label>
+			<input type="text" id="Radio" name="radio" value="{{neumatico.Radio}}">
+		</div>
+		<div class="col-4">
+			<label for="Talle">Talle</label>
+			<input type="text" id="talle" name="talle" value="{{neumatico.Talle}}">
+		</div>
+
+		<div class="col-4">
+			<label for="banda">Banda</label>
+			<input type="text" id="banda" name="banda" value="{{neumatico.Banda}}">
+		</div>
+
+		<div class="row p-t-15">
+		<div class="col-4">
+			<label for="Empresa">Empresa</label>
+			<input type="text" id="Empresa" name="empresa" value="{{neumatico.Empresa}}">
+		</div>
+
+
+		<div class="col-4">
+			<label for="KM_Recientes">KMs Recientes</label>
+			<input type="text" id="KM_Recientes" name="KM_Recientes" value="{{neumatico.KM_Recientes}}">
+		</div>
+
+		<div class="col-4">
+			<label for="Cambiar_En">Cambiar_En</label>
+			<input type="Cambiar_En" id="Cambiar_En" name="Cambiar_En" value="{{neumatico.Cambiar_En}}" disabled="True" style="background-color: #AAA">
+		</div>
+
+		<div class="col-4">
+			<label for="Alta">Alta</label>
+			<input type="text" id="Alta" name="alta" value="{{neumatico.Alta}}">
+		</div>
+
+		<div class="col-4">
+			<label for="Historial">Historial</label>
+			<input type="text" id="historial" name="historial" value="{{neumatico.Historial}}">
+		</div>
+		<div class="col-4"></div>
+
+		</div>
+	</div>
+
+
+<div class="row p-t-50">	</div>
+<div class="col-4">
+			<input type="submit" id="botonagregar" class="btn btn-success" value="Guardar">
+</div>
+
+</div>
+
+
+</form>
+
+</div>
+
+{% endblock %}
